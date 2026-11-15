@@ -1,0 +1,39 @@
+# Environment & Secrets
+.env
+*.env
+backend/.env
+frontend/.env
+
+# Cryptographic Keys (Server-side only, NEVER commit)
+backend/keys/
+*.pem
+*.key
+
+# SQLite Database & Storage
+backend/*.db
+backend/*.db-journal
+backend/storage/encrypted/
+*.simg
+
+# Python Virtual Environment & Caches
+backend/venv/
+backend/__pycache__/
+*/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+htmlcov/
+.coverage
+
+# Frontend Node Modules & Build Outputs
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS Specific
+.DS_Store
+Thumbs.db

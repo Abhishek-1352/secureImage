@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: secureimage_backend
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=sqlite:///./secureimage.db
+      - JWT_SECRET=secureimage-docker-secret-key-2026
+      - ADMIN_EMAIL=admin@secureimage.local
+      - ADMIN_PASSWORD=Admin@123456
+    volumes:
+      - ./backend/keys:/app/keys
+      - ./backend/storage:/app/storage
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: secureimage_frontend
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
